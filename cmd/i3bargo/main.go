@@ -28,7 +28,10 @@ func main() {
 	go func() {
 		for {
 			bio := bufio.NewReader(os.Stdin)
-			line, _, _ := bio.ReadLine()
+			line, _, err := bio.ReadLine()
+			if err != nil {
+				log.Fatal(err)
+			}
 
 			var m ClickMessage
 
@@ -36,7 +39,7 @@ func main() {
 				line = line[1:]
 			}
 
-			err := json.Unmarshal(line, &m)
+			err = json.Unmarshal(line, &m)
 			if err != nil {
 			} else {
 				if config.Modules[m.Name].Onclick != nil {
@@ -86,8 +89,13 @@ func main() {
 				color = config.ColorBad
 			}
 
+			full_text := si.FullText
+			if block.Label != "" {
+				full_text = block.Label + "  " + full_text
+			}
+
 			jsonArray[idx] = map[string]JsonAny{
-				"full_text":     block.Label + "  " + si.FullText,
+				"full_text":     full_text,
 				"color":         color,
 				"border":        block.BorderColor,
 				"border_top":    block.Borders[0],

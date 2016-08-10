@@ -268,34 +268,3 @@ func ReadConfig() *Config {
 
 	return nil
 }
-
-/*func NewConfig() *Config {
-	config := &Config{}
-	config.Data = map[string]string{
-		"bar_size":          "10",
-		"color_bad":         "#d00000",
-		"color_good":        "#00d000",
-		"color_normal":      "#cccccc",
-		"date_format":       "2006-01-02 15:04:05",
-		"format_battery":    "{{if .battery}}{{.prefix}} {{.bar}} ({{.remaining}} {{.wattage}}W){{else}}No battery{{end}}",
-		"format_clock":      "{{.time}}",
-		"format_cpu":        "C {{.bar}}",
-		"format_disk":       "D {{.bar}}",
-		"format_hostname":   "{{.hostname}}",
-		"format_ip":         "{{.ip}}",
-		"format_loadavg":    "{{.fifteen}} {{.five}} {{.one}}",
-		"format_memory":     "R {{.bar}}",
-		"format_uptime":     "{{.uptime}}",
-		"format_weather":    "{{if .error}}{{.error}}{{ else }}{{.today}} {{.high}}/{{.low}} ({{.next}}){{ end }}",
-		"interval":          "1",
-		"network_interface": "wlan0",
-		"order":             "weather,cpu,memory,disk,battery,ip,loadavg,clock",
-		"bar_start":         "[",
-		"bar_end":           "]",
-		"bar_empty":         " ",
-		"bar_full":          "#",
-	}
-	config.BarSize, _ = strconv.Atoi(config.Data["bar_size"])
-	config.Battery, _ = strconv.Atoi(config.Data["battery"])
-	return config
-}*/
