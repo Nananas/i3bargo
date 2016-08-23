@@ -42,6 +42,7 @@ func cpuUsage() (cpuUsage float64) {
 func CPU(c *Config, b *Block) *StatusInfo {
 	data := make(map[string]string)
 	cpuUsage := cpuUsage()
+	data["value"] = strconv.Itoa(int(cpuUsage))
 	data["bar"] = MakeBar(cpuUsage, c)
 	si := NewStatus(b.Template, data)
 	if cpuUsage > 80 {
